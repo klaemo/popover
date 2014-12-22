@@ -126,5 +126,8 @@ Popover.prototype._getLeft = function() {
   var left = (this.buttonCoords.left + ((this.buttonCoords.width - width) / 2))
   // minimal distance
   left = left < 5 ? 5 : left
+  if (left + width >= window.innerWidth) {
+    left = window.innerWidth - width - 5 
+  }
   return left
 }

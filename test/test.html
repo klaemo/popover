@@ -15,6 +15,13 @@
       margin-right: 200px;
       margin-bottom: 200px;
     }
+
+    #corner {
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -26,6 +33,8 @@
     <button id="top" class="btn">Top</button>
     <button id="left" class="btn">Left</button>
   </div>
+
+  <button id="corner" class="btn">Corner</button>
   
   <script>
     function closeOnClick() {
@@ -71,6 +80,12 @@
       button: document.querySelector('#left')
     })
     popover4.setContent('<p>Hello there, <br>I am animated!</p>').render('open')
+
+    var popover5 = new Popover({
+      position: 'top',
+      button: document.querySelector('#corner')
+    })
+    popover5.setContent('<p>Hello there, I am in the corner!</p>').render()
   </script>
 </body>
 </html>
