@@ -32,5 +32,16 @@
     "transform": [
       "brfs"
     ]
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klaemo/popover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/klaemo/popover/issues"
+  },
+  "homepage": "https://github.com/klaemo/popover"
 }
