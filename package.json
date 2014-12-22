@@ -1,13 +1,13 @@
 {
   "name": "popover",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny, reusable popover component",
   "main": "popover.js",
   "scripts": {
     "test": "npm run build && open test/test.html",
     "build": "browserify popover.js --standalone Popover -g uglifyify > popover.built.js",
     "watch": "watchify popover.js -d -v --standalone Popover -o popover.built.js",
-    "prepublish": "npm ls && npm build"
+    "prepublish": "npm ls && npm run build"
   },
   "keywords": [
     "popover",
