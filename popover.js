@@ -57,9 +57,9 @@ Popover.prototype.position = function(pos) {
 
   if (pos === 'bottom') {
     this.el.classList.add('popover-bottom')
-    this.el.style.top = Math.round(this.buttonCoords.top + this.buttonCoords.height) + 'px'
-
     left = this._getLeft()
+    
+    this.el.style.top = Math.round(this.buttonCoords.top + this.buttonCoords.height) + 'px'
     this.el.style.left = left + 'px'
 
     // position arrow accordingly
@@ -69,9 +69,9 @@ Popover.prototype.position = function(pos) {
 
   if (pos === 'right') {
     this.el.classList.add('popover-right')
-    this.el.style.left = Math.round(this.buttonCoords.left + this.buttonCoords.width) + 'px'
-
     top = this._getTop()
+    
+    this.el.style.left = Math.round(this.buttonCoords.left + this.buttonCoords.width) + 'px'
     this.el.style.top = top + 'px'
 
     // position arrow accordingly
@@ -82,9 +82,9 @@ Popover.prototype.position = function(pos) {
   if (pos === 'left') {
     this.el.classList.add('popover-left')
     var w = this.el.getBoundingClientRect().width
-    this.el.style.left = Math.round(this.buttonCoords.left - w) + 'px'
-
     top = this._getTop()
+    
+    this.el.style.left = Math.round(this.buttonCoords.left - w) + 'px'
     this.el.style.top = top + 'px'
 
     // position arrow accordingly
@@ -94,9 +94,10 @@ Popover.prototype.position = function(pos) {
 
   if (pos === 'top') {
     this.el.classList.add('popover-top')
-    this.el.style.top = Math.round(this.buttonCoords.top - this.el.getBoundingClientRect().height) + 'px'
-
+    var h = this.el.getBoundingClientRect().height
     left = this._getLeft()
+    
+    this.el.style.top = Math.round(this.buttonCoords.top - h) + 'px'
     this.el.style.left = left + 'px'
 
     // position arrow accordingly
