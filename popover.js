@@ -3,7 +3,7 @@
 var domify = require('domify')
 var offset = require('document-offset')
 var fs = require('fs')
-var template = fs.readFileSync('template.html', 'utf8')
+var template = fs.readFileSync(__dirname + '/template.html', 'utf8')
 
 module.exports = Popover
 
@@ -71,7 +71,6 @@ Popover.prototype.position = function(pos) {
     this.el.classList.add('popover-right')
     this.el.style.left = Math.round(this.buttonCoords.left + this.buttonCoords.width) + 'px'
 
-    // something something scroll...
     top = this._getTop()
     this.el.style.top = top + 'px'
 
@@ -85,7 +84,6 @@ Popover.prototype.position = function(pos) {
     var w = this.el.getBoundingClientRect().width
     this.el.style.left = Math.round(this.buttonCoords.left - w) + 'px'
 
-    // something something scroll...
     top = this._getTop()
     this.el.style.top = top + 'px'
 
