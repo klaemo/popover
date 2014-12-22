@@ -14,9 +14,9 @@ or download `popover.built.js`
 
 ## Usage
 
-Get in your page either by script tag or module loader.
+Get it in your page either by script tag or module loader/browserify.
 
-```
+```javascript
 var popover = new Popover({
   button: document.querySelector('#triggering-button'),
   position: 'left|top|right|bottom',
@@ -28,6 +28,10 @@ popover.render()
 ## API
 
 TODO...
+
+## TODO
+
+- auto re-position on window resize?
 
 ## License
 ISC
