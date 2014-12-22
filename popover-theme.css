@@ -1,0 +1,175 @@
+.popover {
+  opacity: 0;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, .1);
+}
+
+.popover.show {
+  opacity: 1;
+}
+
+.popover-right {
+  margin-left: 5px;
+}
+
+.popover-left {
+  margin-left: -5px;
+}
+
+.popover-bottom {
+  margin-top: 5px;
+}
+
+.popover-top {
+  margin-top: -5px;
+}
+
+.popover-content {
+  padding: 15px;
+}
+
+/* Animations */
+
+.popover.open {
+  -webkit-animation: open 350ms linear 1s forwards;
+  -o-animation: open 350ms linear 1s forwards;
+  animation: open 350ms linear 1s forwards;
+}
+
+@-webkit-keyframes open {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popover-bottom.open {
+  transform-origin: 50% -10px;
+}
+
+.popover-left.open {
+  transform-origin: 100% 50%;
+}
+
+/* Arrow */
+
+.popover-arrow,
+.popover-arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.popover-arrow {
+  border-width: 11px;
+}
+
+.popover-bottom > .popover-arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #ddd;
+  top: -11px;
+}
+
+.popover-top > .popover-arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-width: 0;
+  border-top-color: #ddd;
+  bottom: -11px;
+}
+
+.popover-right > .popover-arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #ddd;
+}
+
+.popover-left > .popover-arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #ddd;
+}
+
+.popover-arrow:after {
+  border-width: 10px;
+  content: "";
+}
+
+/* direction specific */
+.popover-bottom > .popover-arrow:after {
+  content: " ";
+  top: 1px;
+  margin-left: -10px;
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+
+.popover-top > .popover-arrow:after {
+  content: " ";
+  bottom: 1px;
+  margin-left: -10px;
+  border-bottom-width: 0;
+  border-top-color: #fff;
+}
+
+.popover-right > .popover-arrow:after {
+  content: " ";
+  left: 1px;
+  bottom: -10px;
+  border-left-width: 0;
+  border-right-color: #fff;
+}
+
+.popover-left > .popover-arrow:after {
+  content: " ";
+  right: 1px;
+  bottom: -10px;
+  border-right-width: 0;
+  border-left-color: #fff;
+}

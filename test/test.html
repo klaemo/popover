@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popover Test</title>
+  <link rel="stylesheet" href="../popover.css">
+  <link rel="stylesheet" href="../popover-theme.css">
+  <script src="../popover.built.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .btn {
+      padding: 15px;
+      margin-right: 200px;
+      margin-bottom: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button id="bottom" class="btn">Bottom</button>
+    <button id="right" class="btn">Right</button>
+  </div>
+  <div>
+    <button id="top" class="btn">Top</button>
+    <button id="left" class="btn">Left</button>
+  </div>
+  
+  <script>
+    function closeOnClick() {
+      popover.el.removeEventListener('click')
+      popover.el.addEventListener('click', function () {
+        popover.remove()
+      })
+    }
+
+    var popover = new Popover({
+      button: document.querySelector('#right')
+    })
+    popover.setContent([
+      '<p>This content has been set with .setContent()</p>',
+      '<p>Click anywhere to dismiss popover</p>'
+    ].join('')).render()
+    closeOnClick()
+
+    document.querySelector('#right').addEventListener('click', function (e) {
+      popover = new Popover({
+        template: '<div class="popover"><div class="popover-content"><p>this content was supplied as a template string</p></div></div>',
+        button: e.target
+      })
+      // use .show()
+      popover.show()
+      closeOnClick()
+    })
+
+    var popover2 = new Popover({
+      position: 'bottom',
+      button: document.querySelector('#bottom')
+    })
+    popover2.setContent('Cool!').render()
+
+    var popover3 = new Popover({
+      position: 'top',
+      button: document.querySelector('#top')
+    })
+    popover3.setContent('<p>Hello there!</p>').render()
+
+    var popover4 = new Popover({
+      position: 'left',
+      button: document.querySelector('#left')
+    })
+    popover4.setContent('<p>Hello there, <br>I am animated!</p>').render('open')
+  </script>
+</body>
+</html>
