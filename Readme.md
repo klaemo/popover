@@ -1,5 +1,5 @@
 # Popover Component
-Pretty small (11kb), pretty reliable popovers.
+Pretty small (11kb, minified), pretty reliable popovers.
 Loosely follows Backbone's/Ampersand's [View Conventions](http://ampersandjs.com/learn/view-conventions),
 but doesn't require to be used with either one.
 
@@ -15,19 +15,41 @@ or download `popover.built.js`
 ## Usage
 
 Get it in your page either by script tag or module loader/browserify.
+You'll also need at least `popover.css` or style them yourself.
 
 ```javascript
 var popover = new Popover({
   button: document.querySelector('#triggering-button'),
   position: 'left|top|right|bottom',
-  className: 'optional space-delimited css-classes'
+  className: 'optional space-delimited css-classes',
+  align: 'left|top|right', // optionally aligns popover relative to button
+  template: 'HTMLString|DOMElement' // optional
 })
 popover.render()
 ```
 
 ## API
 
-TODO...
+- `popover.setContent('String|HTMLString|DOMElement')`: Sets the content of the popover
+- `popover.render()`: Renders, positions and displays the popover
+- `popover.remove()`: Removes the popover from the DOM
+- `popover.el`: The popover DOM element
+
+The methods are chainable. So, for example `popover.setContent('foo').render().el` will work.
+
+## Templates
+
+Standard template:
+```html
+<div class="popover">
+  <div class="popover-arrow"></div>
+  <div class="popover-content"></div>
+</div>
+```
+
+If you're passing in a custom template, at least `.popover-content` has to be present.
+The popover comes with minimal styles, feel free to adapt it to your needs. For your convenience
+there is a themed version in `popover-theme.css`.
 
 ## TODO
 

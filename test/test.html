@@ -12,19 +12,27 @@
     }
     .btn {
       padding: 15px;
-      margin-right: 200px;
+      margin-right: 250px;
       margin-bottom: 200px;
     }
 
     #corner {
       position: absolute;
       bottom: 20px;
-      right: 10px;
+      right: 25px;
       margin: 0;
     }
   </style>
 </head>
 <body>
+  <p>
+    <h2>klaemo/popover</h2>
+    <ul>
+      <li>popovers are centered next to their triggering element</li>
+      <li>they'll be aligned automatically if they'd exceed the window</li>
+      <li>can be freely styled and templated</li>
+    </ul>
+  </p>
   <div>
     <button id="bottom" class="btn">Bottom</button>
     <button id="right" class="btn">Right</button>
@@ -32,6 +40,7 @@
   <div>
     <button id="top" class="btn">Top</button>
     <button id="left" class="btn">Left</button>
+    <button id="top-2" class="btn">Top</button>
   </div>
 
   <button id="corner" class="btn">Corner</button>
@@ -67,7 +76,7 @@
       position: 'bottom',
       button: document.querySelector('#bottom')
     })
-    popover2.setContent('Cool!').render()
+    popover2.setContent('Cool Popover, dude!').render()
 
     var popover3 = new Popover({
       position: 'top',
@@ -85,7 +94,13 @@
       position: 'top',
       button: document.querySelector('#corner')
     })
-    popover5.setContent('<p>Hello there, I am in the corner!</p>').render()
+    popover5.setContent('<p>I am in the corner and automatically aligned, because I would not fit!</p>').render()
+
+    var popover6 = new Popover({
+      position: 'top',
+      button: document.querySelector('#top-2')
+    })
+    popover6.setContent('<p>I am centered above!</p>').render()
   </script>
 </body>
 </html>
