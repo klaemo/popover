@@ -37,6 +37,11 @@ popover.render()
 
 The methods are chainable. So, for example `popover.setContent('foo').render().el` will work.
 
+## Events
+
+  - `shown` the popover is shown
+  - `removed` the popover is removed
+
 ## Templates
 
 Standard template:
