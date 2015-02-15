@@ -44,9 +44,8 @@ Popover.prototype.show = Popover.prototype.render = function(className) {
   // push to the next render loop, so transition can work
   setTimeout(function() {
     self.el.classList.add(className || 'show')
+    self.emit('shown')
   }, 0)
-
-  this.emit('show')
 
   return this
 }
@@ -55,7 +54,7 @@ Popover.prototype.destroy = Popover.prototype.remove = function() {
   this.button = null
   this.el.parentNode.removeChild(this.el)
 
-  this.emit('remove')
+  this.emit('removed')
 }
 
 Popover.prototype.setContent = function(el) {
