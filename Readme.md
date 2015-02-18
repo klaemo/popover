@@ -1,5 +1,5 @@
 # Popover Component
-Pretty small (11kb, minified), pretty reliable popovers.
+Pretty small (12kb, minified), pretty reliable popovers.
 Loosely follows Backbone's/Ampersand's [View Conventions](http://ampersandjs.com/learn/view-conventions),
 but doesn't require to be used with either one.
 
@@ -59,6 +59,10 @@ there is a themed version in `popover-theme.css`.
 ## TODO
 
 - auto re-position on window resize?
+
+## Contributors
+
+- [fmal](https://github.com/fmal)
 
 ## License
 ISC
