@@ -5,9 +5,9 @@
   "main": "popover.js",
   "scripts": {
     "test": "npm run build && open test/test.html",
-    "build": "browserify popover.js --standalone Popover -g uglifyify > popover.built.js",
+    "build": "npm prune && browserify popover.js -s Popover -g uglifyify > popover.built.js",
     "build-demo": "npm run build && cp popover*{.js,.css} demo/",
-    "watch": "watchify popover.js -d -v --standalone Popover -o popover.built.js",
+    "watch": "watchify popover.js -d -v -s Popover -o popover.built.js",
     "prepublish": "npm ls && npm run build"
   },
   "keywords": [
