@@ -55,6 +55,8 @@ Popover.prototype.destroy = Popover.prototype.remove = function() {
   this.el.parentNode.removeChild(this.el)
 
   this.emit('removed')
+  // remove all event listeners
+  this.off()
 }
 
 Popover.prototype.setContent = function(el) {
