@@ -1,7 +1,6 @@
 'use strict';
 
 var domify = require('domify')
-var offset = require('document-offset')
 var Emitter = require('emitter-component')
 var fs = require('fs')
 var template = fs.readFileSync(__dirname + '/template.html', 'utf8')
@@ -21,16 +20,7 @@ function Popover(opts) {
   classes.forEach(function(c) { this.el.classList.add(c) }, this)
 
   this.button = opts.button
-
-  var btnRect = this.button.getBoundingClientRect()
-  var btnOffset = offset(this.button)
-
-  this.buttonCoords = {
-    top: btnOffset.top,
-    left: btnOffset.left,
-    height: btnRect.height,
-    width: btnRect.width
-  }
+  this.buttonCoords = this.button.getBoundingClientRect()
 }
 
 Emitter(Popover.prototype)
@@ -75,8 +65,8 @@ Popover.prototype.position = function(pos) {
     x = this._calculateX()
     y = pos === 'top' ? this.buttonCoords.top - this._rect.height : this.buttonCoords.top + this.buttonCoords.height
 
-    this.el.style[this.opts.align || 'left'] = x + 'px'
-    this.el.style.top = y + 'px'
+    this.el.style[this.opts.align || 'left'] = (x + window.scrollX) + 'px'
+    this.el.style.top = (y + window.scrollY) + 'px'
 
     // position arrow accordingly
     this._positionArrow('left', this.el.getBoundingClientRect().left)
@@ -86,8 +76,8 @@ Popover.prototype.position = function(pos) {
     x = pos === 'right' ? this.buttonCoords.left + this.buttonCoords.width : this.buttonCoords.left - this._rect.width
     y = this._calculateY()
 
-    this.el.style.left = x + 'px'
-    this.el.style.top = y + 'px'
+    this.el.style.left = (x + window.scrollX) + 'px'
+    this.el.style.top = (y + window.scrollY) + 'px'
 
     // position arrow accordingly
     this._positionArrow('top', y)

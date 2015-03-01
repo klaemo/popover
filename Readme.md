@@ -1,7 +1,6 @@
 # Popover Component
-Pretty small (12kb, minified), pretty reliable popovers.
-Loosely follows Backbone's/Ampersand's [View Conventions](http://ampersandjs.com/learn/view-conventions),
-but doesn't require to be used with either one.
+Pretty small (6.5kb minified, 2.3kb gzipped), pretty reliable popovers.
+Loosely follows Backbone's/Ampersand's [View Conventions](http://ampersandjs.com/learn/view-conventions), but doesn't require to be used with either one.
 
 Take a look at `test/test.html` or the [demo site](https://klaemo.github.io/popover) for examples. Both use the entirely optional themed version, so don't let that fool you ;-).
 
