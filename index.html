@@ -35,6 +35,7 @@
   </p>
   <div>
     <button id="bottom" class="btn">Bottom</button>
+    <button id="button" class="btn">Delayed</button>
     <button id="right" class="btn">Right</button>
   </div>
   <div>
@@ -101,6 +102,11 @@
       button: document.querySelector('#top-2')
     })
     popover6.setContent('<p>I am centered above!</p>').render()
+
+    var popover7 = new Popover({
+      position: 'bottom',
+    })
+    popover7.setContent('<p>My button is not specified on initialization</p>').setButton('#button').render()
   </script>
 </body>
 </html>
