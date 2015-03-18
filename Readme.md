@@ -63,6 +63,7 @@ there is a themed version in `popover-theme.css`.
 ## Contributors
 
 - [fmal](https://github.com/fmal)
+- [staygrimm](https://github.com/staygrimm)
 
 ## License
 ISC
