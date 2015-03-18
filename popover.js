@@ -19,8 +19,7 @@ function Popover(opts) {
   var classes = this.opts.className ? this.opts.className.split(' ') : []
   classes.forEach(function(c) { this.el.classList.add(c) }, this)
 
-  this.button = opts.button
-  this.buttonCoords = this.button.getBoundingClientRect()
+  if (opts.button) this.setButton(opts.button);
 }
 
 Emitter(Popover.prototype)
@@ -52,6 +51,18 @@ Popover.prototype.destroy = Popover.prototype.remove = function() {
 Popover.prototype.setContent = function(el) {
   el = typeof el === 'string' ? domify(el) : el
   this.el.querySelector('.popover-content').appendChild(el)
+  return this
+}
+
+/**
+ * Attach popover to element `el`
+ * @param {String|Element} el
+ * @api public
+ */
+Popover.prototype.setButton = function(el) {
+  el = typeof el === 'string' ? document.querySelector(el) : el
+  this.button = el
+  this.buttonCoords = this.button.getBoundingClientRect()
   return this
 }
 
