@@ -29,12 +29,13 @@ popover.render()
 
 ## API
 
+- `popover.setButton('String|DOMElement')`: Attaches popover to given element
 - `popover.setContent('String|HTMLString|DOMElement')`: Sets the content of the popover
 - `popover.render()`: Renders, positions and displays the popover
 - `popover.remove()`: Removes the popover from the DOM
 - `popover.el`: The popover DOM element
 
-The methods are chainable. So, for example `popover.setContent('foo').render().el` will work.
+The methods are chainable. So, for example `popover.setContent('foo').setButton('#button').render().el` will work.
 
 ## Events
 
