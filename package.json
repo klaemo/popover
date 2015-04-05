@@ -20,12 +20,13 @@
   "author": "Clemens Stolle <klaemo@fastmail.fm>",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^7.0.3",
-    "uglifyify": "^2.6.0",
-    "watchify": "^2.2.1"
+    "browserify": "^9.0.7",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.1.0"
   },
   "dependencies": {
     "brfs": "^1.2.0",
+    "debounce": "^1.0.0",
     "domify": "^1.3.1",
     "emitter-component": "~1.1.0"
   },
