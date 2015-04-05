@@ -1,6 +1,7 @@
-'use strict';
+'use strict'
 
 var domify = require('domify')
+var debounce = require('debounce')
 var Emitter = require('emitter-component')
 var fs = require('fs')
 var template = fs.readFileSync(__dirname + '/template.html', 'utf8')
@@ -19,7 +20,7 @@ function Popover(opts) {
   var classes = this.opts.className ? this.opts.className.split(' ') : []
   classes.forEach(function(c) { this.el.classList.add(c) }, this)
 
-  if (opts.button) this.setButton(opts.button)
+  if (opts.button) this.setButton(this.opts.button)
 }
 
 Emitter(Popover.prototype)
@@ -31,10 +32,12 @@ Popover.prototype.show = Popover.prototype.render = function(className) {
   this.position(this.opts.position)
 
   // push to the next render loop, so transition can work
-  setTimeout(function() {
+  requestAnimationFrame(function() {
     self.el.classList.add(className || 'show')
     self.emit('shown')
-  }, 0)
+  })
+
+  this._listenOnResize()
 
   return this
 }
@@ -46,6 +49,7 @@ Popover.prototype.destroy = Popover.prototype.remove = function() {
   this.emit('removed')
   // remove all event listeners
   this.off()
+  window.removeEventListener('resize', this._resizeListener, false)
 }
 
 Popover.prototype.setContent = function(el) {
@@ -95,6 +99,15 @@ Popover.prototype.position = function(pos) {
   }
 
   return this
+}
+
+Popover.prototype._listenOnResize = function () {
+  var self = this
+  this._resizeListener = debounce(function () {
+    self.buttonCoords = self.button.getBoundingClientRect()
+    self.position(self.opts.position)
+  }, 100)
+  window.addEventListener('resize', this._resizeListener, false)
 }
 
 Popover.prototype._positionArrow = function(direction, offset) {
