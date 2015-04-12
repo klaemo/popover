@@ -5,6 +5,7 @@ var debounce = require('debounce')
 var Emitter = require('emitter-component')
 var fs = require('fs')
 var template = fs.readFileSync(__dirname + '/template.html', 'utf8')
+var extend = require('ampersand-class-extend')
 
 module.exports = Popover
 
@@ -21,9 +22,14 @@ function Popover(opts) {
   classes.forEach(function(c) { this.el.classList.add(c) }, this)
 
   if (opts.button) this.setButton(this.opts.button)
+
+  this.initialize.apply(this, arguments)
 }
 
 Emitter(Popover.prototype)
+Popover.extend = extend
+
+Popover.prototype.initialize = function () {}
 
 Popover.prototype.show = Popover.prototype.render = function(className) {
   var self = this
