@@ -4,7 +4,7 @@ var domify = require('domify')
 var debounce = require('debounce')
 var Emitter = require('emitter-component')
 var fs = require('fs')
-var template = fs.readFileSync(__dirname + '/template.html', 'utf8')
+var template = '<div class="popover"><div class="popover-arrow"></div><div class="popover-content"></div></div>'
 
 module.exports = Popover
 
