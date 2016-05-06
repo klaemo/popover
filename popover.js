@@ -1,14 +1,14 @@
+/* global requestAnimationFrame */
 'use strict'
 
 var domify = require('domify')
 var debounce = require('debounce')
 var Emitter = require('emitter-component')
-var fs = require('fs')
 var template = '<div class="popover"><div class="popover-arrow"></div><div class="popover-content"></div></div>'
 
 module.exports = Popover
 
-function Popover(opts) {
+function Popover (opts) {
   if (!(this instanceof Popover)) return new Popover(opts)
 
   Emitter.call(this)
@@ -18,21 +18,21 @@ function Popover(opts) {
   this.el = domify(typeof opts.template === 'string' ? opts.template : template)
 
   var classes = this.opts.className ? this.opts.className.split(' ') : []
-  classes.forEach(function(c) { this.el.classList.add(c) }, this)
+  classes.forEach(function (c) { this.el.classList.add(c) }, this)
 
   if (opts.button) this.setButton(this.opts.button)
 }
 
 Emitter(Popover.prototype)
 
-Popover.prototype.show = Popover.prototype.render = function(className) {
+Popover.prototype.show = Popover.prototype.render = function (className) {
   var self = this
   document.body.appendChild(this.el)
   this.opts.position = this.opts.position || 'right'
   this.position(this.opts.position)
 
   // push to the next render loop, so transition can work
-  requestAnimationFrame(function() {
+  requestAnimationFrame(function () {
     self.el.classList.add(className || 'show')
     self.emit('shown')
   })
@@ -42,7 +42,7 @@ Popover.prototype.show = Popover.prototype.render = function(className) {
   return this
 }
 
-Popover.prototype.destroy = Popover.prototype.remove = function() {
+Popover.prototype.destroy = Popover.prototype.remove = function () {
   this.button = null
   this.el.parentNode.removeChild(this.el)
 
@@ -52,7 +52,7 @@ Popover.prototype.destroy = Popover.prototype.remove = function() {
   window.removeEventListener('resize', this._resizeListener, false)
 }
 
-Popover.prototype.setContent = function(el) {
+Popover.prototype.setContent = function (el) {
   el = typeof el === 'string' ? domify(el) : el
   this.el.querySelector('.popover-content').appendChild(el)
   return this
@@ -63,14 +63,14 @@ Popover.prototype.setContent = function(el) {
  * @param {String|Element} el
  * @api public
  */
-Popover.prototype.setButton = function(el) {
+Popover.prototype.setButton = function (el) {
   el = typeof el === 'string' ? document.querySelector(el) : el
   this.button = el
   this.buttonCoords = this.button.getBoundingClientRect()
   return this
 }
 
-Popover.prototype.position = function(pos) {
+Popover.prototype.position = function (pos) {
   var x, y
 
   this.el.classList.add('popover-' + pos)
@@ -110,7 +110,7 @@ Popover.prototype._listenOnResize = function () {
   window.addEventListener('resize', this._resizeListener, false)
 }
 
-Popover.prototype._positionArrow = function(direction, offset) {
+Popover.prototype._positionArrow = function (direction, offset) {
   var arrow = this.el.querySelector('.popover-arrow')
   if (!arrow) return
   var size = direction === 'top' ? 'height' : 'width'
@@ -118,7 +118,7 @@ Popover.prototype._positionArrow = function(direction, offset) {
   arrow.style[direction] = Math.round(pos) + 'px'
 }
 
-Popover.prototype._calculateY = function() {
+Popover.prototype._calculateY = function () {
   if (!this._rect) this._rect = this.el.getBoundingClientRect()
   var height = this._rect.height
 
@@ -131,7 +131,7 @@ Popover.prototype._calculateY = function() {
   return top
 }
 
-Popover.prototype._calculateX = function() {
+Popover.prototype._calculateX = function () {
   if (!this._rect) this._rect = this.el.getBoundingClientRect()
   var width = this._rect.width
 
@@ -147,7 +147,7 @@ Popover.prototype._calculateX = function() {
   return x
 }
 
-Popover.prototype._autoAlign = function(v) {
+Popover.prototype._autoAlign = function (v) {
   if (!this._rect) this._rect = this.el.getBoundingClientRect()
 
   var width = this._rect.width

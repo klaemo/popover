@@ -4,6 +4,7 @@
   "description": "Tiny, reusable popover component",
   "main": "popover.js",
   "scripts": {
+    "pretest": "standard popover.js",
     "test": "npm run build && open test/test.html",
     "build": "npm prune && browserify popover.js -s Popover -g uglifyify > popover.built.js",
     "build-demo": "npm run build && cp popover*{.js,.css} demo/",
@@ -21,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^9.0.7",
+    "standard": "^7.0.1",
     "uglifyify": "^3.0.1",
     "watchify": "^3.1.0"
   },
