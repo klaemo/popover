@@ -21,14 +21,14 @@
   "author": "Clemens Stolle <klaemo@fastmail.fm>",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^9.0.7",
+    "browserify": "^13.0.0",
     "standard": "^7.0.1",
     "uglifyify": "^3.0.1",
-    "watchify": "^3.1.0"
+    "watchify": "^3.7.0"
   },
   "dependencies": {
-    "debounce": "^1.0.0",
-    "domify": "^1.3.1",
+    "debounce": "~1.0.0",
+    "domify": "~1.4.0",
     "emitter-component": "~1.1.0"
   },
   "directories": {
